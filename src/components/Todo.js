@@ -1,12 +1,12 @@
 // create structure todo
 
-const Todo = ({ todo }) => {
+const Todo = ({ todo, onComplete }) => {
   return (
-    <div className="todo">
+    <div className='todo'>
       <div>{todo.text}</div>
       <div>
         <button>Edit</button>
-        <button>Complete</button>
+        <button onClick={onComplete}>Complete</button>
       </div>
     </div>
   );

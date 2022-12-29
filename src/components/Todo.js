@@ -2,7 +2,7 @@
 
 const Todo = ({ todo }) => {
   return (
-    <div>
+    <div className="todo">
       <div>{todo.text}</div>
       <div>
         <button>Edit</button>

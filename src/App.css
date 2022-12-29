@@ -18,3 +18,10 @@
   border-radius: 5px;
   background-color: #fff;
 }
+.todo {
+  width: 20rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px;
+}

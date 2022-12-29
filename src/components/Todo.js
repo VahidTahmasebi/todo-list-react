@@ -1,6 +1,6 @@
 // create structure todo
 
-const Todo = ({ todo, onComplete }) => {
+const Todo = ({ todo, onComplete, onDelete }) => {
   return (
     <div className='todo'>
       <div onClick={onComplete} className={todo.isCompleted ? "completed" : ""}>
@@ -8,7 +8,7 @@ const Todo = ({ todo, onComplete }) => {
       </div>
       <div>
         <button>Edit</button>
-        <button>Delete</button>
+        <button onClick={onDelete}>Delete</button>
       </div>
     </div>
   );

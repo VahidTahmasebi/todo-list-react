@@ -1,7 +1,7 @@
 import Todo from "./Todo";
 
 // render structure todo list
-const TodoList = ({ todos, onComplete }) => {
+const TodoList = ({ todos, onComplete, onDelete }) => {
   const renderTodo = () => {
     // if there is no todo
     if (todos.length === 0) return <p>add note todos</p>;
@@ -14,6 +14,7 @@ const TodoList = ({ todos, onComplete }) => {
           todo={todo}
           key={todo.id}
           onComplete={() => onComplete(todo.id)}
+          onDelete={() => onDelete(todo.id)}
         />
       );
     });

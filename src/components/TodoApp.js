@@ -18,12 +18,16 @@ const TodoApp = () => {
 
   //   complete handler todo
   const completeTodo = (id) => {
-    console.log(id);
+    // obtain cell ID
     const index = todos.findIndex((todo) => todo.id === id);
-
-    const selectedTodo = [...todos[index]];
+    // clone find index
+    const selectedTodo = { ...todos[index] };
+    // apply order
     selectedTodo.isCompleted = !selectedTodo.isCompleted;
+    // clone todos
     const updatedTodos = [...todos];
+
+    // update state
     updatedTodos[index] = selectedTodo;
     setTodos(updatedTodos);
   };

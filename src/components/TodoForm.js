@@ -12,6 +12,16 @@ const TodoForm = (props) => {
   //   form submit button operation
   const submitHandler = (e) => {
     e.preventDefault();
+
+    // alert massage because the text entry is empty
+    if (!inputValue) {
+      alert("enter todo !");
+      return;
+    }
+    // send input text to the parent component
+    props.addTodoHandler(inputValue);
+    // clear text entry
+    setInputValue("");
   };
 
   return (

@@ -1,23 +1,17 @@
+import Todo from "./Todo";
+
+// render structure todo list
 const TodoList = ({ todos }) => {
   const renderTodo = () => {
     // if there is no todo
     if (todos.length === 0) return <p>add note todos</p>;
 
+    // loop on todo state
     return todos.map((todo) => {
-      return (
-        <div key={todo.id}>
-          <div>{todo.text}</div>
-          <div>
-            <button>Edit</button>
-            <button>Complete</button>
-          </div>
-        </div>
-      );
+      return <Todo todo={todo} key={todo.id} />;
     });
   };
 
-  // create structure todo list
-  // loop on state
   return <div>{renderTodo()}</div>;
 };
 

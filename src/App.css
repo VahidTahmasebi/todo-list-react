@@ -89,3 +89,7 @@ header span {
   color: #6d28d9;
   background-color: #d0c7f7;
 }
+.select {
+  width: 150px;
+  margin-left: 10px;
+}

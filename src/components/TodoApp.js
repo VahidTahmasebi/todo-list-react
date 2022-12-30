@@ -1,9 +1,10 @@
 import { useState } from "react";
+import NavBar from "./NavBar";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
 
 const TodoApp = () => {
-  const [todos, setTodos] = useState("");
+  const [todos, setTodos] = useState([]);
 
   //   create a new todo attribute
   const addTodo = (input) => {
@@ -38,6 +39,7 @@ const TodoApp = () => {
     setTodos(filteredTodos);
   };
 
+  // Edit Todo
   const updateTodo = (id, newValue) => {
     // obtain cell ID
     const index = todos.findIndex((todo) => todo.id === id);
@@ -55,6 +57,9 @@ const TodoApp = () => {
 
   return (
     <div className='container'>
+      <NavBar
+        unCompletedTodo={todos.filter((todo) => !todo.isCompleted).length}
+      />
       <TodoForm submitTodo={addTodo} />
       <TodoList
         todos={todos}

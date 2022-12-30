@@ -5,7 +5,6 @@ const TodoForm = (props) => {
 
   //   receive text input
   const changeHandler = (e) => {
-    console.log(e.target.value);
     setInputValue(e.target.value);
   };
 
@@ -19,15 +18,24 @@ const TodoForm = (props) => {
       return;
     }
     // send input text to the parent component
-    props.addTodoHandler(inputValue);
+    props.submitTodo(inputValue);
     // clear text entry
     setInputValue("");
   };
 
   return (
     <form onSubmit={submitHandler}>
-      <input type='text' value={inputValue} onChange={changeHandler} />
-      <button type='submit'>add</button>
+      {props.edit ? (
+        <>
+          <input type='text' value={inputValue} onChange={changeHandler} placeholder="update todo..."/>
+          <button type='submit'>Update</button>
+        </>
+      ) : (
+        <>
+          <input type='text' value={inputValue} onChange={changeHandler} placeholder="add todo..."/>
+          <button type='submit'>add</button>
+        </>
+      )}
     </form>
   );
 };

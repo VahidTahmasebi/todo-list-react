@@ -6,7 +6,7 @@ const TodoApp = () => {
   const [todos, setTodos] = useState("");
 
   //   create a new todo attribute
-  const addTodoHandler = (input) => {
+  const addTodo = (input) => {
     const newTodo = {
       id: Math.floor(Math.random() * 1000),
       text: input,
@@ -38,10 +38,30 @@ const TodoApp = () => {
     setTodos(filteredTodos);
   };
 
+  const updateTodo = (id, newValue) => {
+    // obtain cell ID
+    const index = todos.findIndex((todo) => todo.id === id);
+    // clone find index
+    const selectedTodo = { ...todos[index] };
+    // apply new text
+    selectedTodo.text = newValue;
+    // clone todos
+    const updateTodos = [...todos];
+
+    // update state
+    updateTodos[index] = selectedTodo;
+    setTodos(updateTodos);
+  };
+
   return (
     <div className='container'>
-      <TodoForm addTodoHandler={addTodoHandler} />
-      <TodoList todos={todos} onComplete={completeTodo} onDelete={removeTodo} />
+      <TodoForm submitTodo={addTodo} />
+      <TodoList
+        todos={todos}
+        onComplete={completeTodo}
+        onDelete={removeTodo}
+        onUpdateTodo={updateTodo}
+      />
     </div>
   );
 };

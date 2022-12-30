@@ -29,3 +29,12 @@
   text-decoration: line-through;
   color: #efefef;
 }
+input {
+  padding: 5px 3px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+}
+input:focus {
+  border: 1px solid blueviolet;
+}

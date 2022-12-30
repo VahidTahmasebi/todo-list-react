@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import NavBar from "./NavBar";
 import TodoForm from "./TodoForm";
 import TodoList from "./TodoList";
@@ -6,7 +6,11 @@ import TodoList from "./TodoList";
 const TodoApp = () => {
   const [todos, setTodos] = useState([]);
   const [filteredTodos, setFilteredTodos] = useState([]);
+  const [status, setStatus] = useState("All");
 
+  useEffect(() => {
+    filterTodos(status);
+  }, [todos, status]);
   //   create a new todo attribute
   const addTodo = (input) => {
     const newTodo = {
@@ -71,15 +75,23 @@ const TodoApp = () => {
     }
   };
 
+  //   function to get filter information
+  const selectHandler = (e) => {
+    setStatus(e.target.value);
+    filterTodos(e.target.value);
+  };
+
   return (
     <div className='container'>
       <NavBar
         unCompletedTodo={todos.filter((todo) => !todo.isCompleted).length}
         filterTodos={filterTodos}
+        status={status}
+        onSelect={selectHandler}
       />
       <TodoForm submitTodo={addTodo} />
       <TodoList
-        todos={todos}
+        todos={filteredTodos}
         onComplete={completeTodo}
         onDelete={removeTodo}
         onUpdateTodo={updateTodo}

@@ -18,7 +18,7 @@ const TodoList = ({ todos, onComplete, onDelete, onUpdateTodo }) => {
     // loop on todo state
     return todos.map((todo) => {
       return (
-        // props onComplete: get the desired todo id
+        // props onComplete & onDelete & onEdit: get the desired todo id
         <Todo
           todo={todo}
           key={todo.id}
